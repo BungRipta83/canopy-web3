@@ -1,25 +1,15 @@
 const hre = require("hardhat");
 
-async function deploy(name) {
-  const F = await hre.ethers.getContractFactory(name);
-  const c = await F.deploy();
-  await c.waitForDeployment();
-  const addr = await c.getAddress();
-  console.log(`${name} deployed ->`, addr);
-  return addr;
-}
-
 async function main() {
-  console.log("Network:", hre.network.name);
+  const Staking = await hre.ethers.getContractFactory("CanopyStaking");
+  const staking = await Staking.deploy();
 
-  const storage = await deploy("CanopyStorage");
-  const staking = await deploy("CanopyStaking");
+  await staking.waitForDeployment();
 
-  console.log("\nSUMMARY");
-  console.log({ storage, staking });
+  console.log("Contract deployed to:", await staking.getAddress());
 }
 
-main().catch((e) => {
-  console.error(e);
+main().catch((error) => {
+  console.error(error);
   process.exitCode = 1;
 });
