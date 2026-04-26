@@ -1,0 +1,16 @@
+const { expect } = require("chai");
+
+describe("CanopyStaking", function () {
+  it("stake & withdraw works", async function () {
+    const [user] = await ethers.getSigners();
+    const F = await ethers.getContractFactory("CanopyStaking");
+    const c = await F.deploy();
+
+    await c.connect(user).stake({ value: ethers.parseEther("0.01") });
+    expect(await c.balanceOf(user.address))
+      .to.equal(ethers.parseEther("0.01"));
+
+    await c.connect(user).withdraw(ethers.parseEther("0.01"));
+    expect(await c.balanceOf(user.address)).to.equal(0n);
+  });
+});
