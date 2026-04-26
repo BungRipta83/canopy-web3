@@ -1,23 +1,11 @@
-# 🌿 Canopy Web3 (Modular Smart Contracts)
+# 🌿 Canopy Web3
 
-A lightweight Web3 architecture inspired by Canopy:
-- Sub-chain logic → CanopyStorage
-- Shared security → CanopyStaking
+A modular smart contract system inspired by Canopy architecture.
 
-## 🚀 Quick Start
-npm install
-npm run compile
-npm run test
+## 🔥 Features
+- Sub-chain simulation (Storage)
+- Shared security via staking
 
-## 🌐 Deploy (Sepolia)
-cp .env.example .env
-# isi RPC_URL & PRIVATE_KEY
-npm run deploy:sepolia
-
-## 📦 Tech Stack
-- Hardhat
-- Ethers.js
-- Solidity 0.8.x
-
-## 📜 License
-MIT
+## 🚀 Use Case
+This project simulates how small applications (sub-chains)
+can leverage shared security using staking.
